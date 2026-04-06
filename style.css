@@ -234,6 +234,37 @@ header {
   position: relative;
   border-radius: 12px;
   background: transparent;
+  animation: placeCard 0.5s cubic-bezier(0.4, 0.2, 0.2, 1) forwards;
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+@keyframes placeCard {
+  0% {
+    opacity: 0;
+    transform: perspective(800px) rotateX(-70deg);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: perspective(800px) rotateX(-15deg);
+  }
+
+  75% {
+    opacity: 0.9;
+    transform: perspective(800px) rotateX(2deg);
+  }
+
+  90% {
+    transform: perspective(800px) rotateX(-0.5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg);
+  }
 }
 
 .card::before {
