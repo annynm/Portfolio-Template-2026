@@ -185,25 +185,59 @@ template {
   display: none;
 }
 
-/*Logo*/
+/* Header */
 header {
-  background-color: #245f34;
-  transform: rotate(-10deg);
   position: fixed;
   width: 1000px;
   left: -40px;
   top: -90px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  transform: rotate(-10deg);
+}
+
+header>div {
+  background-color: #245f34;
   padding: 25px 40px 20px 40px;
 }
 
+/* Logo */
 .logo-pic {
   width: 64px;
   transform: rotate(10deg);
   margin-left: 10px;
 }
 
-/*Background*/
+/* Navigation */
+nav {
+  margin-left: 30px;
+  width: 65%;
+  display: flex;
+  margin-top: 5px;
+}
 
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+nav a {
+  color: #5badca;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+nav a:hover {
+  transform: scale(1.1);
+}
+
+/* Background */
 .bg-box1 {
   position: fixed;
   bottom: -30%;
@@ -227,18 +261,17 @@ header {
   background-color: #6fc586;
 }
 
-/*Cards*/
+/* Cards */
 .card {
   height: 360px;
   width: 260px;
   position: relative;
   border-radius: 12px;
   background: transparent;
-  animation: placeCard 0.5s cubic-bezier(0.4, 0.2, 0.2, 1) forwards;
+  animation: placeCard 0.35s cubic-bezier(0.3, 1.2, 0.4, 1) forwards;
   transform-style: preserve-3d;
   opacity: 0;
   transform-origin: bottom center;
-  will-change: transform, opacity;
 }
 
 @keyframes placeCard {
@@ -247,18 +280,13 @@ header {
     transform: perspective(800px) rotateX(-70deg);
   }
 
-  50% {
-    opacity: 0.5;
-    transform: perspective(800px) rotateX(-15deg);
+  60% {
+    opacity: 0.7;
+    transform: perspective(800px) rotateX(-8deg);
   }
 
-  75% {
-    opacity: 0.9;
+  80% {
     transform: perspective(800px) rotateX(2deg);
-  }
-
-  90% {
-    transform: perspective(800px) rotateX(-0.5deg);
   }
 
   100% {
