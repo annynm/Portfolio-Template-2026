@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/*RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -12,6 +19,8 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
+  /* Ensure body takes full viewport height for centering */
 }
 
 main {
@@ -185,6 +194,28 @@ template {
   display: none;
 }
 
+/* Background Image Container - behind everything */
+.bg-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
 /* Header */
 header {
   position: fixed;
@@ -195,6 +226,7 @@ header {
   margin: 0;
   background: transparent;
   transform: rotate(-10deg);
+  z-index: 10;
 }
 
 header>div {
@@ -237,7 +269,7 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-/* Background */
+/* Background Boxes */
 .bg-box1 {
   position: fixed;
   bottom: -30%;
@@ -246,6 +278,7 @@ nav a:hover {
   display: flex;
   align-items: flex-start;
   transform: rotate(-10deg);
+  z-index: -1;
 }
 
 .bg-box-left {
@@ -261,17 +294,106 @@ nav a:hover {
   background-color: #6fc586;
 }
 
-/* Cards */
+/* Cards Wrapper - vertically centers the cards container */
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 0 20px;
+  /* Account for header offset – header is fixed and rotated, but doesn't take space in flow */
+}
+
+/* Cards Container - horizontal scroll, centered */
+.cards-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cards-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 24px;
+  padding: 20px 40px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar */
+.cards-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cards-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.cards-scroll::-webkit-scrollbar-thumb {
+  background: #5badca;
+  border-radius: 10px;
+}
+
+/* Each card */
 .card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
   height: 360px;
   width: 260px;
   position: relative;
   border-radius: 12px;
   background: transparent;
-  animation: placeCard 0.35s cubic-bezier(0.3, 1.2, 0.4, 1) forwards;
   transform-style: preserve-3d;
   opacity: 0;
   transform-origin: bottom center;
+  animation: placeCard 0.35s cubic-bezier(0.3, 1.2, 0.4, 1) forwards;
+  animation-fill-mode: forwards;
+}
+
+/* Staggered animation delays */
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.card:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.card:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
+.card:nth-child(10) {
+  animation-delay: 1s;
 }
 
 @keyframes placeCard {
